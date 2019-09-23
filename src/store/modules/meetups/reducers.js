@@ -21,6 +21,18 @@ export default function meetup(state = INITIAL_STATE, action) {
                 draft.loading = false;
                 break;
             }
+            case '@meetups/CANCEL_MEETUP_REQUEST': {
+                draft.loading = true;
+                break;
+            }
+            case '@meetups/CANCEL_MEETUP_SUCCESS': {
+                draft.loading = false;
+                break;
+            }
+            case '@meetups/CANCEL_MEETUP_FAILURE': {
+                draft.loading = false;
+                break;
+            }
             default:
         }
     });

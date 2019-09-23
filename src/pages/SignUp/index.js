@@ -27,21 +27,29 @@ export default function SignUp() {
 
     return (
         <>
-            <img src={logo} alt="GoBarber" />
+            <img src={logo} alt="Meetapp" />
             <Form schema={schema} onSubmit={handleSubmit}>
-                <Input name="name" placeholder="Nome completo" />
+                <Input
+                    name="name"
+                    placeholder="Nome completo"
+                    autoComplete="off"
+                />
                 <Input
                     name="email"
                     type="email"
                     placeholder="Digite seu e-mail"
+                    autoComplete="off"
                 />
                 <Input
                     name="password"
                     type="password"
                     placeholder="Sua senha secreta"
+                    autoComplete="off"
                 />
 
-                <button type="submit">Criar conta</button>
+                <button className="meetapp" type="submit">
+                    Criar conta
+                </button>
                 <Link to="/">Já tenho login</Link>
             </Form>
         </>

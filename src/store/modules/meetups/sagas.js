@@ -4,7 +4,14 @@ import pt from 'date-fns/locale/pt';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
-import { fetchMeetupsSuccess, fetchMeetupsFailure } from './actions';
+import {
+    fetchMeetupsSuccess,
+    fetchMeetupsFailure,
+    cancelMeetupSuccess,
+    cancelMeetupFailure,
+} from './actions';
+
+import history from '~/services/history';
 
 export function* fetchMeetups() {
     try {
@@ -28,6 +35,22 @@ export function* fetchMeetups() {
     }
 }
 
+export function* cancelMeetup({ payload }) {
+    try {
+        const { id } = payload;
+
+        yield call(api.delete, `meetups/${id}`);
+        yield put(cancelMeetupSuccess());
+
+        history.push('/dashboard');
+        toast.success('Meetup cancelado com sucesso!');
+    } catch (error) {
+        toast.error('Falha ao cancelar o meetup.');
+        yield put(cancelMeetupFailure());
+    }
+}
+
 export default all([
     takeLatest('@meetups/FETCH_MEETUPS_REQUEST', fetchMeetups),
+    takeLatest('@meetups/CANCEL_MEETUP_REQUEST', cancelMeetup),
 ]);

@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { MdModeEdit, MdDeleteForever, MdEvent, MdPlace } from 'react-icons/md';
 
 import history from '~/services/history';
-// import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
+import { cancelMeetupRequest } from '~/store/modules/meetups/actions';
 
 import { Container, Meetup, EditButton, CancelButton } from './styles';
 
@@ -22,15 +21,11 @@ export default function Details({ match }) {
     }
 
     async function handleEdit() {
-        history.push(`/meetup/edit/${meetupId}`);
+        history.push(`/meetups/${meetupId}/edit`);
     }
 
     async function handleCancel() {
-        try {
-            // dispatch(cancelMeetupRequest(meetupId));
-        } catch (error) {
-            toast.error('Houve um erro ao cancelar o meetup');
-        }
+        dispatch(cancelMeetupRequest(meetupId));
     }
 
     return (
@@ -38,22 +33,24 @@ export default function Details({ match }) {
             <header>
                 <strong>{meetup.title}</strong>
                 <aside>
-                    <EditButton
+                    <button
                         type="button"
-                        className="edit"
+                        className="meetapp"
+                        id="edit"
                         onClick={handleEdit}
                     >
                         <MdModeEdit size={20} />
                         Editar
-                    </EditButton>
-                    <CancelButton
+                    </button>
+                    <button
                         type="button"
-                        className="cancel"
+                        className="meetapp"
+                        id="cancel"
                         onClick={handleCancel}
                     >
                         <MdDeleteForever size={20} />
                         Cancelar
-                    </CancelButton>
+                    </button>
                 </aside>
             </header>
             <Meetup>

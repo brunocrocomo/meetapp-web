@@ -17,11 +17,16 @@ export default function Profile() {
     return (
         <Container>
             <Form initialData={profile} onSubmit={handleSubmit}>
-                <Input name="name" placeholder="Nome completo" />
+                <Input
+                    name="name"
+                    placeholder="Nome completo"
+                    autoComplete="off"
+                />
                 <Input
                     name="email"
                     type="email"
                     placeholder="Seu endereço de e-mail"
+                    autoComplete="off"
                 />
 
                 <hr />
@@ -30,19 +35,22 @@ export default function Profile() {
                     type="password"
                     name="oldPassword"
                     placeholder="Sua senha atual"
+                    autoComplete="off"
                 />
                 <Input
                     type="password"
                     name="password"
                     placeholder="Nova senha"
+                    autoComplete="off"
                 />
                 <Input
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirmação de senha"
+                    autoComplete="off"
                 />
 
-                <button type="submit">
+                <button className="meetapp" type="submit">
                     <AddIcon size={24} color="#FFF" />
                     Salvar perfil
                 </button>

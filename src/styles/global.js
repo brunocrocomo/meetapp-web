@@ -24,7 +24,7 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, button {
+    body, input, textarea, button {
         font: 14px 'Helvetica', sans-serif;
     }
 
@@ -36,7 +36,7 @@ export default createGlobalStyle`
         list-style: none;
     }
 
-    input {
+    textarea, input {
         background: rgba(0, 0, 0, 0.2);
         height: 50px;
         margin: 0 0 10px;
@@ -46,13 +46,12 @@ export default createGlobalStyle`
         color: #fff;
         font-size: 18px;
 
-
         &::placeholder {
             color: rgba(255, 255, 255, 0.5);
         }
     }
 
-    button {
+    button.meetapp {
         cursor: pointer;
 
         height: 42px;
@@ -65,7 +64,7 @@ export default createGlobalStyle`
         transition: background 0.2s;
 
         &:hover {
-            background: ${darken(0.06, '#f94d6a')};
+            background: ${darken(0.1, '#f94d6a')};
         }
     }
 `;

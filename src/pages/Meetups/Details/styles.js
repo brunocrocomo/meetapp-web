@@ -20,34 +20,34 @@ export const Container = styled.div`
             display: flex;
         }
     }
-`;
 
-export const EditButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 116px;
-    background: #4dbaf9;
+    button#edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 116px;
+        background: #4dbaf9;
 
-    &:hover {
-        background: ${darken(0.06, '#4dbaf9')};
+        &:hover {
+            background: ${darken(0.2, '#4dbaf9')};
+        }
+
+        svg {
+            margin-right: 10px;
+        }
     }
 
-    svg {
-        margin-right: 10px;
-    }
-`;
+    button#cancel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-export const CancelButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        width: 138px;
+        margin-left: 15px;
 
-    width: 138px;
-    margin-left: 15px;
-
-    svg {
-        margin-right: 10px;
+        svg {
+            margin-right: 10px;
+        }
     }
 `;
 
@@ -64,7 +64,7 @@ export const Meetup = styled.div`
         height: 300px;
         border-radius: 4px;
         margin-bottom: 25px;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     p {
@@ -85,7 +85,7 @@ export const Meetup = styled.div`
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 60px;
+            margin-right: 30px;
         }
 
         svg {

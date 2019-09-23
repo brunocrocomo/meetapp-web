@@ -21,8 +21,8 @@ export default function Dashboard() {
                     <strong>Meus meetups</strong>
                 </div>
                 <aside>
-                    <Link to="/profile">
-                        <button type="button">
+                    <Link to="/meetups/new">
+                        <button className="meetapp" type="button">
                             <MdAddCircleOutline size={24} color="#FFF" />
                             Novo meetup
                         </button>

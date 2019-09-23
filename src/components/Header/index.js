@@ -29,7 +29,11 @@ export default function Header() {
                             <strong>{profile.name}</strong>
                             <Link to="/profile">Meu perfil</Link>
                         </div>
-                        <button type="button" onClick={handleSignOut}>
+                        <button
+                            className="meetapp"
+                            type="button"
+                            onClick={handleSignOut}
+                        >
                             Sair
                         </button>
                     </Profile>

@@ -25,20 +25,22 @@ export default function SignIn() {
 
     return (
         <>
-            <img src={logo} alt="GoBarber" />
+            <img src={logo} alt="Meetapp" />
             <Form schema={schema} onSubmit={handleSubmit}>
                 <Input
                     name="email"
                     type="email"
                     placeholder="Digite seu e-mail"
+                    autoComplete="off"
                 />
                 <Input
                     name="password"
                     type="password"
                     placeholder="Sua senha secreta"
+                    autoComplete="off"
                 />
 
-                <button type="submit">
+                <button className="meetapp" type="submit">
                     {loading ? 'Carregando...' : 'Entrar'}
                 </button>
                 <Link to="/register">Criar conta grátis</Link>
