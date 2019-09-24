@@ -26,18 +26,14 @@ export const Container = styled.div`
             font-weight: bold;
         }
 
-        button.meetapp {
+        button {
             display: flex;
             align-items: center;
             justify-content: center;
 
             align-self: flex-end;
             width: 180px;
-            margin-top: 15px;
-
-            svg {
-                margin-right: 10px;
-            }
+            margin-top: 10px;
         }
     }
 `;

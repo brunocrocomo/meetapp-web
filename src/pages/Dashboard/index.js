@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 
 import { fetchMeetupsRequest } from '~/store/modules/meetups/actions';
+import Button from '~/components/Button';
 import { Container, Meetup } from './styles';
 
 export default function Dashboard() {
@@ -22,10 +23,11 @@ export default function Dashboard() {
                 </div>
                 <aside>
                     <Link to="/meetups/create">
-                        <button className="meetapp" type="button">
-                            <MdAddCircleOutline size={24} color="#FFF" />
-                            Novo meetup
-                        </button>
+                        <Button
+                            type="button"
+                            icon={<MdAddCircleOutline size={24} color="#FFF" />}
+                            label="Novo meetup"
+                        />
                     </Link>
                 </aside>
             </header>

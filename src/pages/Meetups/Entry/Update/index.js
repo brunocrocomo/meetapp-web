@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import { zonedTimeToUtc } from 'date-fns-tz';
 import { MdAddCircleOutline } from 'react-icons/md';
@@ -8,10 +9,11 @@ import PropTypes from 'prop-types';
 
 import { updateMeetupRequest } from '~/store/modules/meetups/actions';
 
-import { Container } from '../styles';
-
+import Button from '~/components/Button';
 import ImageInput from '~/components/ImageInput';
 import DatePicker from '~/components/DatePicker';
+
+import { Container } from '../styles';
 
 const schema = Yup.object().shape({
     title: Yup.string().required('Insira um título para o meetup'),
@@ -28,10 +30,13 @@ export default function Update({ match }) {
     const dispatch = useDispatch();
 
     const meetupId = Number(match.params.id);
-    const meetups = useSelector(state => state.meetups.list);
-    const loading = useSelector(state => state.user.loading);
+    const { list: meetups, loading } = useSelector(state => state.meetups);
 
     const meetup = meetups.find(m => m.id === meetupId);
+
+    if (!meetup) {
+        return <Redirect to="/dashboard" />;
+    }
 
     const currentMeetup = {
         title: meetup.title,
@@ -83,16 +88,12 @@ export default function Update({ match }) {
                     placeholder="Localização"
                     autoComplete="off"
                 />
-                <button className="meetapp" type="submit">
-                    {loading ? (
-                        'Enviando dados...'
-                    ) : (
-                        <>
-                            <MdAddCircleOutline size={20} />
-                            Salvar meetup
-                        </>
-                    )}
-                </button>
+                <Button
+                    icon={<MdAddCircleOutline size={20} color="#FFF" />}
+                    type="submit"
+                    label="Salvar meetup"
+                    loading={loading}
+                />
             </Form>
         </Container>
     );

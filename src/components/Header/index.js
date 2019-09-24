@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { signOut } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo.svg';
+import Button from '~/components/Button';
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
@@ -29,13 +30,11 @@ export default function Header() {
                             <strong>{profile.name}</strong>
                             <Link to="/profile">Meu perfil</Link>
                         </div>
-                        <button
-                            className="meetapp"
+                        <Button
                             type="button"
+                            label="Sair"
                             onClick={handleSignOut}
-                        >
-                            Sair
-                        </button>
+                        />
                     </Profile>
                 </aside>
             </Content>

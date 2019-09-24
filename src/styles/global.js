@@ -50,21 +50,4 @@ export default createGlobalStyle`
             color: rgba(255, 255, 255, 0.5);
         }
     }
-
-    button.meetapp {
-        cursor: pointer;
-
-        height: 42px;
-        border: 0;
-        border-radius: 4px;
-        background: #f94d6a;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background 0.2s;
-
-        &:hover {
-            background: ${darken(0.1, '#f94d6a')};
-        }
-    }
 `;

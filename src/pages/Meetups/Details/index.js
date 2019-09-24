@@ -7,11 +7,12 @@ import { MdModeEdit, MdDeleteForever, MdEvent, MdPlace } from 'react-icons/md';
 import history from '~/services/history';
 import { cancelMeetupRequest } from '~/store/modules/meetups/actions';
 
+import Button from '~/components/Button';
 import { Container, Meetup } from './styles';
 
 export default function Details({ match }) {
     const meetupId = Number(match.params.id);
-    const meetups = useSelector(state => state.meetups.list);
+    const { list: meetups, loading } = useSelector(state => state.meetups);
     const dispatch = useDispatch();
 
     const meetup = meetups.find(m => m.id === meetupId);
@@ -34,24 +35,21 @@ export default function Details({ match }) {
                 <strong>{meetup.title}</strong>
                 {!meetup.past && (
                     <aside>
-                        <button
+                        <Button
                             type="button"
-                            className="meetapp"
+                            icon={<MdModeEdit size={20} color="#FFF" />}
                             id="edit"
+                            label="Editar"
                             onClick={handleEdit}
-                        >
-                            <MdModeEdit size={20} />
-                            Editar
-                        </button>
-                        <button
+                        />
+                        <Button
                             type="button"
-                            className="meetapp"
+                            icon={<MdDeleteForever size={20} color="#FFF" />}
                             id="cancel"
+                            label="Cancelar"
+                            loading={loading}
                             onClick={handleCancel}
-                        >
-                            <MdDeleteForever size={20} />
-                            Cancelar
-                        </button>
+                        />
                     </aside>
                 )}
             </header>

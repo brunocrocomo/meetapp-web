@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo.svg';
+import Button from '~/components/Button';
 
 const schema = Yup.object().shape({
     email: Yup.string()
@@ -39,10 +40,7 @@ export default function SignIn() {
                     placeholder="Sua senha secreta"
                     autoComplete="off"
                 />
-
-                <button className="meetapp" type="submit">
-                    {loading ? 'Carregando...' : 'Entrar'}
-                </button>
+                <Button type="submit" label="Entrar" loading={loading} />
                 <Link to="/register">Criar conta grátis</Link>
             </Form>
         </>

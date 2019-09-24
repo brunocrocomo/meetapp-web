@@ -4,11 +4,12 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
+import Button from '~/components/Button';
 import { Container, AddIcon } from './styles';
 
 export default function Profile() {
     const dispatch = useDispatch();
-    const profile = useSelector(state => state.user.profile);
+    const { profile, loading } = useSelector(state => state.user);
 
     function handleSubmit(data) {
         dispatch(updateProfileRequest(data));
@@ -49,11 +50,12 @@ export default function Profile() {
                     placeholder="Confirmação de senha"
                     autoComplete="off"
                 />
-
-                <button className="meetapp" type="submit">
-                    <AddIcon size={24} color="#FFF" />
-                    Salvar perfil
-                </button>
+                <Button
+                    icon={<AddIcon size={20} color="#FFF" />}
+                    type="submit"
+                    label="Salvar perfil"
+                    loading={loading}
+                />
             </Form>
         </Container>
     );

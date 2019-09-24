@@ -31,10 +31,6 @@ export const Container = styled.div`
         &:hover {
             background: ${darken(0.2, '#4dbaf9')};
         }
-
-        svg {
-            margin-right: 10px;
-        }
     }
 
     button#cancel {
@@ -44,10 +40,6 @@ export const Container = styled.div`
 
         width: 138px;
         margin-left: 15px;
-
-        svg {
-            margin-right: 10px;
-        }
     }
 `;
 

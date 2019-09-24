@@ -6,10 +6,11 @@ import * as Yup from 'yup';
 
 import { createMeetupRequest } from '~/store/modules/meetups/actions';
 
-import { Container } from '../styles';
-
+import Button from '~/components/Button';
 import ImageInput from '~/components/ImageInput';
 import DatePicker from '~/components/DatePicker';
+
+import { Container } from '../styles';
 
 const schema = Yup.object().shape({
     title: Yup.string().required('Insira um título para o meetup'),
@@ -23,7 +24,7 @@ const schema = Yup.object().shape({
 });
 
 export default function Create() {
-    const loading = useSelector(state => state.user.loading);
+    const { loading } = useSelector(state => state.meetups);
     const dispatch = useDispatch();
 
     function handleSubmit({ title, description, date, location, file_id }) {
@@ -54,16 +55,12 @@ export default function Create() {
                     placeholder="Localização"
                     autoComplete="off"
                 />
-                <button className="meetapp" type="submit">
-                    {loading ? (
-                        'Enviando dados...'
-                    ) : (
-                        <>
-                            <MdAddCircleOutline size={20} />
-                            Salvar meetup
-                        </>
-                    )}
-                </button>
+                <Button
+                    icon={<MdAddCircleOutline size={20} color="#FFF" />}
+                    type="submit"
+                    label="Salvar meetup"
+                    loading={loading}
+                />
             </Form>
         </Container>
     );
