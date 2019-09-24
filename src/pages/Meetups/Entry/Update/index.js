@@ -20,9 +20,8 @@ const schema = Yup.object().shape({
     description: Yup.string().required('Insira uma descrição para o meetup'),
     date: Yup.date().required('Insira uma data para o meetup'),
     location: Yup.string().required('Insira o local do meetup'),
-    // @TODO: Check why unform isn't showing validation message for file_id
     file_id: Yup.number().required(
-        'É obrigatório inserir uma imagem para o meetup'
+        'É obrigatório definir uma imagem para o meetup'
     ),
 });
 
@@ -43,10 +42,9 @@ export default function Update({ match }) {
         description: meetup.description,
         date: zonedTimeToUtc(meetup.date),
         location: meetup.location,
-        file: {
+        file_id: {
             url: meetup.file.url,
             id: meetup.file.id,
-            path: meetup.file.path,
         },
     };
 
@@ -70,7 +68,7 @@ export default function Update({ match }) {
                 initialData={currentMeetup}
                 onSubmit={handleSubmit}
             >
-                <ImageInput name="file" />
+                <ImageInput name="file_id" />
                 <Input
                     name="title"
                     placeholder="Título do meetup"

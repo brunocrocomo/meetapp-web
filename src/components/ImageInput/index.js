@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 import { MdCameraAlt } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
 import api from '~/services/api';
 import { Container } from './styles';
 
-export default function ImageInput() {
-    const { defaultValue, registerField } = useField('file');
+export default function ImageInput({ name }) {
+    const { fieldName, registerField, defaultValue, error } = useField(name);
 
     const [file, setFile] = useState(defaultValue && defaultValue.id);
     const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -16,12 +17,12 @@ export default function ImageInput() {
     useEffect(() => {
         if (ref.current) {
             registerField({
-                name: 'file_id',
+                name: fieldName,
                 ref: ref.current,
                 path: 'dataset.file',
             });
         }
-  }, [ref.current]); // eslint-disable-line
+    }, [ref.current]); // eslint-disable-line
 
     async function handleChange(e) {
         const data = new FormData();
@@ -45,6 +46,7 @@ export default function ImageInput() {
                     <div>
                         <MdCameraAlt size={55} />
                         <strong>Selecionar imagem</strong>
+                        {error && <span>{error}</span>}
                     </div>
                 )}
                 <input
@@ -59,3 +61,7 @@ export default function ImageInput() {
         </Container>
     );
 }
+
+ImageInput.propTypes = {
+    name: PropTypes.string.isRequired,
+};

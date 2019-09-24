@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import { setHours, setMinutes } from 'date-fns';
 import { useField } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+// @TODO: Find a way to block passed hours and minutes on picker
 export default function DatePicker({ name, placeholder }) {
     const ref = useRef(null);
     const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -31,8 +31,6 @@ export default function DatePicker({ name, placeholder }) {
                 placeholderText={placeholder}
                 showTimeSelect
                 minDate={new Date()}
-                minTime={setHours(setMinutes(new Date(), 0), 17)}
-                maxTime={setHours(setMinutes(new Date(), 30), 23)}
                 dateFormat="dd/MM/yyyy, à's' HH:mm"
                 autoComplete="off"
                 ref={ref}

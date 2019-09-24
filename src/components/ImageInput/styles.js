@@ -36,6 +36,13 @@ export const Container = styled.div`
             strong {
                 font-size: 20px;
             }
+
+            span {
+                color: #f64c75;
+                align-self: flex-start;
+                margin-top: 10px;
+                font-weight: bold;
+            }
         }
 
         img {
