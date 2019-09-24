@@ -9,8 +9,8 @@ import Dashboard from '../pages/Dashboard';
 
 import Profile from '../pages/Profile';
 
-import NewMeetup from '../pages/Meetups/Entry/New';
-import EditMeetup from '../pages/Meetups/Entry/Edit';
+import CreateMeetup from '../pages/Meetups/Entry/Create';
+import UpdateMeetup from '../pages/Meetups/Entry/Update';
 import Details from '../pages/Meetups/Details';
 
 export default function Routes() {
@@ -22,8 +22,12 @@ export default function Routes() {
             <Route path="/dashboard" component={Dashboard} isPrivate />
             <Route path="/profile" component={Profile} isPrivate />
 
-            <Route path="/meetups/new" component={NewMeetup} isPrivate />
-            <Route path="/meetups/:id/edit" component={EditMeetup} isPrivate />
+            <Route path="/meetups/create" component={CreateMeetup} isPrivate />
+            <Route
+                path="/meetups/:id/update"
+                component={UpdateMeetup}
+                isPrivate
+            />
             <Route path="/meetups/:id/details" component={Details} isPrivate />
         </Switch>
     );

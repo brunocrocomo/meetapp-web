@@ -4,34 +4,35 @@ import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 import * as Yup from 'yup';
 
-// import ImageInput from '~/components/ImageInput';
-import DatePicker from '~/components/DatePicker';
-
-// import { newMeetupRequest } from '~/store/modules/meetup/actions';
+import { createMeetupRequest } from '~/store/modules/meetups/actions';
 
 import { Container } from '../styles';
 
+import ImageInput from '~/components/ImageInput';
+import DatePicker from '~/components/DatePicker';
+
 const schema = Yup.object().shape({
+    title: Yup.string().required('Insira um título para o meetup'),
+    description: Yup.string().required('Insira uma descrição para o meetup'),
+    date: Yup.date().required('Insira uma data para o meetup'),
+    location: Yup.string().required('Insira o local do meetup'),
     file_id: Yup.number().required(),
-    title: Yup.string().required('Insira o título do meetup'),
-    description: Yup.string().required('Descreva o seu meetup'),
-    date: Yup.date().required('Insira uma data'),
-    location: Yup.string().required('Insira o local'),
 });
 
-export default function New() {
+export default function Create() {
     const loading = useSelector(state => state.user.loading);
     const dispatch = useDispatch();
 
-    function handleSubmit({ file_id, title, description, date, location }) {
-        /* dispatch(newMeetupRequest(file_id, title, description, date, location)); */
+    function handleSubmit({ title, description, date, location, file_id }) {
+        dispatch(
+            createMeetupRequest(title, description, date, location, file_id)
+        );
     }
 
     return (
         <Container>
             <Form schema={schema} onSubmit={handleSubmit}>
-                {/*<ImageInput name="file" />*/}
-
+                <ImageInput name="file" />
                 <Input
                     name="title"
                     placeholder="Título do meetup"
@@ -49,10 +50,9 @@ export default function New() {
                     placeholder="Localização"
                     autoComplete="off"
                 />
-
                 <button className="meetapp" type="submit">
                     {loading ? (
-                        'Salvando...'
+                        'Enviando dados...'
                     ) : (
                         <>
                             <MdAddCircleOutline size={20} />

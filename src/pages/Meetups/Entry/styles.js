@@ -8,6 +8,10 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
 
+        input {
+            width: 100%;
+        }
+
         textarea {
             height: 200px;
             padding-top: 20px;
@@ -29,6 +33,7 @@ export const Container = styled.div`
 
             align-self: flex-end;
             width: 180px;
+            margin-top: 15px;
 
             svg {
                 margin-right: 10px;

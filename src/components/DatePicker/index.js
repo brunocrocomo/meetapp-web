@@ -29,7 +29,6 @@ export default function DatePicker({ name, placeholder }) {
                 onChange={date => setSelected(date)}
                 placeholderText={placeholder}
                 showTimeSelect
-                minDate={new Date()}
                 dateFormat="dd/MM/yyyy, à's' HH:mm"
                 autoComplete="off"
                 ref={ref}

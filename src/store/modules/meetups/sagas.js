@@ -7,6 +7,10 @@ import api from '~/services/api';
 import {
     fetchMeetupsSuccess,
     fetchMeetupsFailure,
+    createMeetupSuccess,
+    createMeetupFailure,
+    updateMeetupSuccess,
+    updateMeetupFailure,
     cancelMeetupSuccess,
     cancelMeetupFailure,
 } from './actions';
@@ -35,6 +39,53 @@ export function* fetchMeetups() {
     }
 }
 
+export function* createMeetup({ payload }) {
+    try {
+        const { title, description, date, location, file_id } = payload;
+
+        yield call(api.post, 'meetups', {
+            title,
+            description,
+            date,
+            location,
+            file_id,
+        });
+
+        yield put(createMeetupSuccess());
+
+        history.push('/dashboard');
+        toast.success('Meetup criado com sucesso!');
+    } catch (error) {
+        toast.error(
+            'Falha ao criar o meetup. Verifique se todos os dados estão inseridos corretamente.'
+        );
+        yield put(createMeetupFailure());
+    }
+}
+
+export function* updateMeetup({ payload }) {
+    try {
+        const { id, title, description, date, location, file_id } = payload;
+
+        const meetup = {
+            title,
+            description,
+            date,
+            location,
+            file_id,
+        };
+
+        yield call(api.put, `meetups/${id}`, meetup);
+        yield put(updateMeetupSuccess());
+
+        history.push('/dashboard');
+        toast.success('Meetup atualizado com sucesso!');
+    } catch (error) {
+        toast.error('Falha ao atualizar, verifique seus dados!');
+        yield put(updateMeetupFailure());
+    }
+}
+
 export function* cancelMeetup({ payload }) {
     try {
         const { id } = payload;
@@ -52,5 +103,7 @@ export function* cancelMeetup({ payload }) {
 
 export default all([
     takeLatest('@meetups/FETCH_MEETUPS_REQUEST', fetchMeetups),
+    takeLatest('@meetups/CREATE_MEETUP_REQUEST', createMeetup),
+    takeLatest('@meetups/UPDATE_MEETUP_REQUEST', updateMeetup),
     takeLatest('@meetups/CANCEL_MEETUP_REQUEST', cancelMeetup),
 ]);
