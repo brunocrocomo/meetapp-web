@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import { setHours, setMinutes } from 'date-fns';
 import { useField } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 
@@ -29,6 +30,9 @@ export default function DatePicker({ name, placeholder }) {
                 onChange={date => setSelected(date)}
                 placeholderText={placeholder}
                 showTimeSelect
+                minDate={new Date()}
+                minTime={setHours(setMinutes(new Date(), 0), 17)}
+                maxTime={setHours(setMinutes(new Date(), 30), 23)}
                 dateFormat="dd/MM/yyyy, à's' HH:mm"
                 autoComplete="off"
                 ref={ref}

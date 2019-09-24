@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { darken } from 'polished';
 
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
