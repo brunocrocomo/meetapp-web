@@ -16,7 +16,10 @@ const schema = Yup.object().shape({
     description: Yup.string().required('Insira uma descrição para o meetup'),
     date: Yup.date().required('Insira uma data para o meetup'),
     location: Yup.string().required('Insira o local do meetup'),
-    file_id: Yup.number().required(),
+    // @TODO: Check why unform isn't showing validation message for file_id
+    file_id: Yup.number().required(
+        'É obrigatório inserir uma imagem para o meetup'
+    ),
 });
 
 export default function Create() {
@@ -24,6 +27,7 @@ export default function Create() {
     const dispatch = useDispatch();
 
     function handleSubmit({ title, description, date, location, file_id }) {
+        console.tron.log(file_id);
         dispatch(
             createMeetupRequest(title, description, date, location, file_id)
         );

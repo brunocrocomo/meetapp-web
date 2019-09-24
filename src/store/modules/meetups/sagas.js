@@ -6,13 +6,10 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import {
     fetchMeetupsSuccess,
-    fetchMeetupsFailure,
     createMeetupSuccess,
-    createMeetupFailure,
     updateMeetupSuccess,
-    updateMeetupFailure,
     cancelMeetupSuccess,
-    cancelMeetupFailure,
+    meetupsFailure,
 } from './actions';
 
 import history from '~/services/history';
@@ -35,7 +32,7 @@ export function* fetchMeetups() {
         yield put(fetchMeetupsSuccess(meetups));
     } catch (error) {
         toast.error('Não foi possível carregar os meetups do servidor.');
-        yield put(fetchMeetupsFailure());
+        yield put(meetupsFailure());
     }
 }
 
@@ -59,7 +56,7 @@ export function* createMeetup({ payload }) {
         toast.error(
             'Falha ao criar o meetup. Verifique se todos os dados estão inseridos corretamente.'
         );
-        yield put(createMeetupFailure());
+        yield put(meetupsFailure());
     }
 }
 
@@ -82,7 +79,7 @@ export function* updateMeetup({ payload }) {
         toast.success('Meetup atualizado com sucesso!');
     } catch (error) {
         toast.error('Falha ao atualizar, verifique seus dados!');
-        yield put(updateMeetupFailure());
+        yield put(meetupsFailure());
     }
 }
 
@@ -97,7 +94,7 @@ export function* cancelMeetup({ payload }) {
         toast.success('Meetup cancelado com sucesso!');
     } catch (error) {
         toast.error('Falha ao cancelar o meetup.');
-        yield put(cancelMeetupFailure());
+        yield put(meetupsFailure());
     }
 }
 

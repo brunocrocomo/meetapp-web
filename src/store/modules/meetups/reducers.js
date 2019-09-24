@@ -17,19 +17,11 @@ export default function meetup(state = INITIAL_STATE, action) {
                 draft.list = action.payload.meetups;
                 break;
             }
-            case '@meetups/FETCH_MEETUPS_FAILURE': {
-                draft.loading = false;
-                break;
-            }
             case '@meetups/CREATE_MEETUP_REQUEST': {
                 draft.loading = true;
                 break;
             }
             case '@meetups/CREATE_MEETUP_SUCCESS': {
-                draft.loading = false;
-                break;
-            }
-            case '@meetups/CREATE_MEETUP_FAILURE': {
                 draft.loading = false;
                 break;
             }
@@ -41,10 +33,7 @@ export default function meetup(state = INITIAL_STATE, action) {
                 draft.loading = false;
                 break;
             }
-            case '@meetups/UPDATE_MEETUP_FAILURE': {
-                draft.loading = false;
-                break;
-            }
+
             case '@meetups/CANCEL_MEETUP_REQUEST': {
                 draft.loading = true;
                 break;
@@ -53,7 +42,7 @@ export default function meetup(state = INITIAL_STATE, action) {
                 draft.loading = false;
                 break;
             }
-            case '@meetups/CANCEL_MEETUP_FAILURE': {
+            case '@meetups/FAILURE': {
                 draft.loading = false;
                 break;
             }

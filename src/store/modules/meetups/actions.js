@@ -11,12 +11,6 @@ export function fetchMeetupsSuccess(meetups) {
     };
 }
 
-export function fetchMeetupsFailure() {
-    return {
-        type: '@meetups/FETCH_MEETUPS_FAILURE',
-    };
-}
-
 export function createMeetupRequest(
     title,
     description,
@@ -33,12 +27,6 @@ export function createMeetupRequest(
 export function createMeetupSuccess() {
     return {
         type: '@meetups/CREATE_MEETUP_SUCCESS',
-    };
-}
-
-export function createMeetupFailure() {
-    return {
-        type: '@meetups/CREATE_MEETUP_FAILURE',
     };
 }
 
@@ -62,12 +50,6 @@ export function updateMeetupSuccess() {
     };
 }
 
-export function updateMeetupFailure() {
-    return {
-        type: '@meetups/UPDATE_MEETUP_FAILURE',
-    };
-}
-
 export function cancelMeetupRequest(id) {
     return {
         type: '@meetups/CANCEL_MEETUP_REQUEST',
@@ -81,8 +63,8 @@ export function cancelMeetupSuccess() {
     };
 }
 
-export function cancelMeetupFailure() {
+export function meetupsFailure() {
     return {
-        type: '@meetups/CANCEL_MEETUP_FAILURE',
+        type: '@meetups/FAILURE',
     };
 }
