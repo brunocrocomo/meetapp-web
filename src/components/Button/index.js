@@ -5,10 +5,9 @@ import { FaSpinner } from 'react-icons/fa';
 
 import Button from './styles';
 
-export default function Index(props) {
-    const { loading, icon, label } = props;
+export default function Index({ loading, icon, label, ...rest }) {
     return (
-        <Button {...props}>
+        <Button loading={loading ? 1 : 0} {...rest}>
             {loading ? (
                 <FaSpinner color="#fff" size={25} />
             ) : (
@@ -27,6 +26,7 @@ Index.propTypes = {
     icon: PropTypes.element,
     backgroundColor: PropTypes.string,
     loading: PropTypes.bool,
+    onClick: PropTypes.func,
 };
 
 Index.defaultProps = {
@@ -34,4 +34,5 @@ Index.defaultProps = {
     icon: null,
     backgroundColor: '#f94d6a',
     loading: false,
+    onClick: undefined,
 };
