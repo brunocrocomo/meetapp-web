@@ -13,6 +13,26 @@ const schema = Yup.object().shape({
     email: Yup.string()
         .email('Type a valid e-mail.')
         .required('The e-mail field is required.'),
+    oldPassword: Yup.string(),
+    password: Yup.string().when('oldPassword', (oldPassword, field) =>
+        oldPassword
+            ? field.required(
+                  'The new password field is required for changing password.'
+              )
+            : field
+    ),
+    confirmPassword: Yup.string().when('password', (password, field) =>
+        password
+            ? field
+                  .required(
+                      'The confirm new password field is required for changing password.'
+                  )
+                  .oneOf(
+                      [Yup.ref('password')],
+                      'The new password does not match.'
+                  )
+            : field
+    ),
 });
 
 export default function Profile() {
