@@ -11,9 +11,9 @@ import Button from '~/components/Button';
 
 const schema = Yup.object().shape({
     email: Yup.string()
-        .email('Insira um e-mail válido.')
-        .required('O e-mail é obrigatório.'),
-    password: Yup.string().required('A senha é obrigatória.'),
+        .email('Type a valid e-mail.')
+        .required('The e-mail field is required.'),
+    password: Yup.string().required('The password field is required.'),
 });
 
 export default function SignIn() {
@@ -31,17 +31,17 @@ export default function SignIn() {
                 <Input
                     name="email"
                     type="email"
-                    placeholder="Digite seu e-mail"
+                    placeholder="Type your e-mail"
                     autoComplete="off"
                 />
                 <Input
                     name="password"
                     type="password"
-                    placeholder="Sua senha secreta"
+                    placeholder="Type your password"
                     autoComplete="off"
                 />
-                <Button type="submit" label="Entrar" loading={loading} />
-                <Link to="/register">Criar conta grátis</Link>
+                <Button type="submit" label="Login" loading={loading} />
+                <Link to="/register">Create a free account</Link>
             </Form>
         </>
     );

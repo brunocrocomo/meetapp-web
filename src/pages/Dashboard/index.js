@@ -19,14 +19,14 @@ export default function Dashboard() {
         <Container>
             <header>
                 <div>
-                    <strong>Meus meetups</strong>
+                    <strong>My meetups</strong>
                 </div>
                 <aside>
                     <Link to="/meetups/create">
                         <Button
                             type="button"
                             icon={<MdAddCircleOutline size={24} color="#FFF" />}
-                            label="Novo meetup"
+                            label="New meetup"
                         />
                     </Link>
                 </aside>

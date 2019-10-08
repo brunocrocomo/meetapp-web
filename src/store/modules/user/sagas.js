@@ -18,11 +18,13 @@ export function* updateProfile({ payload }) {
 
         const response = yield call(api.put, 'users', profile);
 
-        toast.success('Perfil atualizado com sucesso!');
+        toast.success('Your account has been updated successfully!');
 
         yield put(updateProfileSuccess(response.data));
     } catch (err) {
-        toast.error('Erro ao atualizar perfil, confira seus dados!');
+        toast.error(
+            'It was not possible to complete your request. Please, check your data and try again.'
+        );
         yield put(updateProfileFailure());
     }
 }

@@ -45,7 +45,7 @@ export default function ImageInput({ name }) {
                 ) : (
                     <div>
                         <MdCameraAlt size={55} />
-                        <strong>Selecionar imagem</strong>
+                        <strong>Select image</strong>
                         {error && <span>{error}</span>}
                     </div>
                 )}

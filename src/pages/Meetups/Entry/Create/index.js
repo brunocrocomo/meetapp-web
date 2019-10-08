@@ -13,13 +13,11 @@ import DatePicker from '~/components/DatePicker';
 import { Container } from '../styles';
 
 const schema = Yup.object().shape({
-    title: Yup.string().required('Insira um título para o meetup'),
-    description: Yup.string().required('Insira uma descrição para o meetup'),
-    date: Yup.date().required('Insira uma data para o meetup'),
-    location: Yup.string().required('Insira o local do meetup'),
-    file_id: Yup.number().required(
-        'É obrigatório inserir uma imagem para o meetup'
-    ),
+    title: Yup.string().required('The title field is required.'),
+    description: Yup.string().required('The description field is required.'),
+    date: Yup.date().required('The date field is required.'),
+    location: Yup.string().required('The location field is required.'),
+    file_id: Yup.number().required('Your meetup should have a display image!'),
 });
 
 export default function Create() {
@@ -36,27 +34,23 @@ export default function Create() {
         <Container>
             <Form schema={schema} onSubmit={handleSubmit}>
                 <ImageInput name="file_id" />
-                <Input
-                    name="title"
-                    placeholder="Título do meetup"
-                    autoComplete="off"
-                />
+                <Input name="title" placeholder="Title" autoComplete="off" />
                 <Input
                     name="description"
-                    placeholder="Descrição completa"
+                    placeholder="Description"
                     multiline
                     autoComplete="off"
                 />
-                <DatePicker name="date" placeholder="Data do meetup" />
+                <DatePicker name="date" placeholder="Date" />
                 <Input
                     name="location"
-                    placeholder="Localização"
+                    placeholder="Location"
                     autoComplete="off"
                 />
                 <Button
                     icon={<MdAddCircleOutline size={20} color="#FFF" />}
                     type="submit"
-                    label="Salvar meetup"
+                    label="Save meetup"
                     loading={loading}
                 />
             </Form>

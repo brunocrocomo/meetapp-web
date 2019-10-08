@@ -10,13 +10,13 @@ import logo from '~/assets/logo.svg';
 import Button from '~/components/Button';
 
 const schema = Yup.object().shape({
-    name: Yup.string().required('O nome é obrigatório.'),
+    name: Yup.string().required('The name field is required.'),
     email: Yup.string()
-        .email('Insira um e-mail válido.')
-        .required('O e-mail é obrigatório.'),
+        .email('Type a valid e-mail.')
+        .required('The e-mail field is required.'),
     password: Yup.string()
-        .min(6, 'No mínimo 6 carateres.')
-        .required('A senha é obrigatória.'),
+        .min(6, 'Your password should have at least 6 characters.')
+        .required('The password field is required.'),
 });
 
 export default function SignUp() {
@@ -33,23 +33,27 @@ export default function SignUp() {
             <Form schema={schema} onSubmit={handleSubmit}>
                 <Input
                     name="name"
-                    placeholder="Nome completo"
+                    placeholder="Type your full name"
                     autoComplete="off"
                 />
                 <Input
                     name="email"
                     type="email"
-                    placeholder="Digite seu e-mail"
+                    placeholder="Type your e-mail"
                     autoComplete="off"
                 />
                 <Input
                     name="password"
                     type="password"
-                    placeholder="Sua senha secreta"
+                    placeholder="Type your password"
                     autoComplete="off"
                 />
-                <Button type="submit" label="Criar conta" loading={loading} />
-                <Link to="/">Já tenho login</Link>
+                <Button
+                    type="submit"
+                    label="Create account"
+                    loading={loading}
+                />
+                <Link to="/">I already have an account</Link>
             </Form>
         </>
     );

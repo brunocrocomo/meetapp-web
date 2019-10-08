@@ -1,11 +1,19 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import Button from '~/components/Button';
 import { Container, AddIcon } from './styles';
+
+const schema = Yup.object().shape({
+    name: Yup.string().required('The name field is required.'),
+    email: Yup.string()
+        .email('Type a valid e-mail.')
+        .required('The e-mail field is required.'),
+});
 
 export default function Profile() {
     const dispatch = useDispatch();
@@ -17,16 +25,16 @@ export default function Profile() {
 
     return (
         <Container>
-            <Form initialData={profile} onSubmit={handleSubmit}>
+            <Form initialData={profile} schema={schema} onSubmit={handleSubmit}>
                 <Input
                     name="name"
-                    placeholder="Nome completo"
+                    placeholder="Type your full name"
                     autoComplete="off"
                 />
                 <Input
                     name="email"
                     type="email"
-                    placeholder="Seu endereço de e-mail"
+                    placeholder="Type your e-mail"
                     autoComplete="off"
                 />
 
@@ -35,25 +43,25 @@ export default function Profile() {
                 <Input
                     type="password"
                     name="oldPassword"
-                    placeholder="Sua senha atual"
+                    placeholder="Current password"
                     autoComplete="off"
                 />
                 <Input
                     type="password"
                     name="password"
-                    placeholder="Nova senha"
+                    placeholder="New password"
                     autoComplete="off"
                 />
                 <Input
                     type="password"
                     name="confirmPassword"
-                    placeholder="Confirmação de senha"
+                    placeholder="Confirm new password"
                     autoComplete="off"
                 />
                 <Button
                     icon={<AddIcon size={20} color="#FFF" />}
                     type="submit"
-                    label="Salvar perfil"
+                    label="Save profile"
                     loading={loading}
                 />
             </Form>

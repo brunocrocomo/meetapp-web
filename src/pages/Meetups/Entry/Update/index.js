@@ -89,7 +89,7 @@ export default function Update({ match }) {
                 <Button
                     icon={<MdAddCircleOutline size={20} color="#FFF" />}
                     type="submit"
-                    label="Salvar meetup"
+                    label="Save meetup"
                     loading={loading}
                 />
             </Form>

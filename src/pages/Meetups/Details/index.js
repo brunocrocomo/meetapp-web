@@ -39,14 +39,14 @@ export default function Details({ match }) {
                             type="button"
                             icon={<MdModeEdit size={20} color="#FFF" />}
                             id="edit"
-                            label="Editar"
+                            label="Edit"
                             onClick={handleEdit}
                         />
                         <Button
                             type="button"
                             icon={<MdDeleteForever size={20} color="#FFF" />}
                             id="cancel"
-                            label="Cancelar"
+                            label="Cancel"
                             loading={loading}
                             onClick={handleCancel}
                         />

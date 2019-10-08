@@ -23,7 +23,9 @@ export function* signIn({ payload }) {
 
         history.push('/dashboard');
     } catch (err) {
-        toast.error('Falha na autenticação, verifique seus dados.');
+        toast.error(
+            'Authentication failed. Please check your data and try again.'
+        );
         yield put(signFailure());
     }
 }
@@ -41,9 +43,11 @@ export function* signUp({ payload }) {
         yield put(signUpSuccess());
 
         history.push('/');
-        toast.success('Conta criada com sucesso!');
+        toast.success('Your account has been created successfully!');
     } catch (err) {
-        toast.error('Falha no cadastro, verifique seus dados!');
+        toast.error(
+            'It was not possible to create your account. Please check your data and try again.'
+        );
         yield put(signFailure());
     }
 }
