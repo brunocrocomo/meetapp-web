@@ -31,7 +31,7 @@ export default function DatePicker({ name, placeholder }) {
                 placeholderText={placeholder}
                 showTimeSelect
                 minDate={new Date()}
-                dateFormat="dd/MM/yyyy, à's' HH:mm"
+                dateFormat="MMMM do, h:mm a"
                 autoComplete="off"
                 ref={ref}
             />

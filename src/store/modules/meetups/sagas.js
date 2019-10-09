@@ -1,6 +1,5 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { parseISO, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
@@ -20,13 +19,7 @@ export function* fetchMeetups() {
 
         const meetups = response.data.map(meetup => ({
             ...meetup,
-            formattedDate: format(
-                parseISO(meetup.date),
-                "dd 'de' MMMM',' 'às' HH'h'",
-                {
-                    locale: pt,
-                }
-            ),
+            formattedDate: format(parseISO(meetup.date), 'MMMM do, h:mm a'),
         }));
 
         yield put(fetchMeetupsSuccess(meetups));
